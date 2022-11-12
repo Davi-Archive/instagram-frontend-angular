@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../authentication/authentication.service';
 import { confirmPassword } from '../shared/validators/confirmPassword.validator';
 import { RegisterService } from './register.service';
 
@@ -11,7 +12,10 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private registerService: RegisterService) {
+  constructor(
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private registerService: RegisterService) {
     this.form = this.fb.group({
       file: [null],
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -51,6 +55,10 @@ export class RegisterComponent implements OnInit {
       }
       await this.registerService.register(requisitonBody);
       // TODO login
+      await this.authenticationService.login({
+        login: formValues.email,
+        senha: formValues.password
+      })
       alert('Cadastro realizado com sucesso!')
     } catch (error: any) {
       const errorMessage: any = error?.error?.error || 'Erro ao relizar o Cadastro'

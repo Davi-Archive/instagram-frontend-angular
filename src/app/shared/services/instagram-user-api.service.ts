@@ -1,0 +1,14 @@
+import { Injectable } from "@angular/core";
+import { UserInstagram } from "../types/user-instagram.types";
+import { InstagramApiService } from "./instagram-api.service";
+
+@Injectable({
+    providedIn: 'root'
+})
+export class InstagramUserApi extends InstagramApiService {
+
+    getUserData(): Promise<UserInstagram> {
+        return this.get('usuario');
+    }
+
+}

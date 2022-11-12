@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
@@ -11,13 +11,19 @@ import { FooterPublicPageComponent } from './public/footer-public-page/footer-pu
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from '../register/register.component';
+import { InstagramApiInterceptor } from './services/instagram-api-interceptor.service';
 
 
 @NgModule({
-  providers:[
+  providers: [
     {
       provide: 'INSTAGRAM_URL_API',
       useValue: environment.instagramUrlApi
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InstagramApiInterceptor,
+      multi: true
     }
   ],
   declarations: [

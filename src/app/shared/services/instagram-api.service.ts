@@ -23,6 +23,16 @@ export class InstagramApiService {
     })
   }
 
+  public get(url: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.getUrl(url))
+        .subscribe({
+          next: v => resolve(v),
+          error: e => reject(e)
+        })
+    });
+  }
+
   private getUrl(url: string): string {
     return `${this.instagramUrlApi}/${url}`;
   }
