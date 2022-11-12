@@ -8,12 +8,12 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class LoginComponent implements OnInit {
 
- public form: FormGroup;
+  public form: FormGroup;
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       image: [null],
-      name: ['', Validators.required],
-      password: ['', Validators.required]
+      login: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
     })
   }
   public getReferences(nameField: string): AbstractControl {
