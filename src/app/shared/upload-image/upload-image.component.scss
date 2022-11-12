@@ -1,0 +1,30 @@
+.containerUploadImage {
+  &.registerPageUpload {
+    text-align: center;
+    cursor: pointer;
+    object-fit: cover;
+    position: relative;
+    .avatarPreview {
+      width: 120px;
+      height: 120px;
+      border: 1px solid var(--gray1);
+      border-radius: 50%;
+    }
+
+    &::after {
+      position: absolute;
+      display: flex;
+      content: url("/assets/images/camera.svg");
+      width: 40px;
+      height: 40px;
+      right: 0px;
+      left: 90px;
+      bottom: 5px;
+      margin:auto;
+    }
+  }
+  .containerPreview {
+    border: 1px solid var(´--gray);
+    border-radius: 50%;
+  }
+}
