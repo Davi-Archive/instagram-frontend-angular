@@ -5,6 +5,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { PublicInputComponent } from './public/public-input/public-input.component';
 import { FormsModule } from '@angular/forms';
+import { PublicPageComponent } from './public/public-page/public-page.component';
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     ButtonComponent,
     AvatarComponent,
     UploadImageComponent,
-    PublicInputComponent
+    PublicInputComponent,
+    PublicPageComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     ButtonComponent,
     AvatarComponent,
     UploadImageComponent,
-    PublicInputComponent
+    PublicInputComponent,
+    PublicPageComponent
   ]
 })
 export class SharedModule { }

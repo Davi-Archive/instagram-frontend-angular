@@ -22,8 +22,7 @@ export class UploadImageComponent implements OnInit {
 
   public changeImage(event: any): void {
     if (event.target.files && event.target.files.length) {
-      const file = event.target.files[0];
-
+      const [file] = event.target.files;
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
       fileReader.onloadend = () => {

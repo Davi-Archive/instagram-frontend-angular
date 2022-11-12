@@ -36,3 +36,16 @@ body {
 .hidden {
   display: none !important;
 }
+
+input {
+  &::placeholder,
+  &:-ms-input-placeholder,
+  &:-ms-input-placeholder {
+    color: car(--gray2);
+  }
+}
+.errorMessage {
+  color: var(--red);
+  margin: 5px;
+  font-size: 80%;
+}

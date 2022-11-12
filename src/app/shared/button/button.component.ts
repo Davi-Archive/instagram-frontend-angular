@@ -9,7 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() public text?: string
   @Input() public color: string = 'primary'
-  @Input() public class: string = ''
+  @Input() public classCss: string = ''
   @Input() public type: string = 'button'
   @Input() public disabled: boolean = false
   constructor() { }
