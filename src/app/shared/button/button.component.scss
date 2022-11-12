@@ -1,0 +1,33 @@
+@mixin btnNormal {
+  color: var(--white);
+  background-color: var(--primaryColor);
+}
+
+@mixin btnOutline {
+  background-color: var(--white);
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  &.primary {
+    @include btnNormal;
+    &:hover {
+      @include btnOutline;
+    }
+  }
+  &.outline {
+      @include btnOutline;
+      &:hover {
+        @include btnNormal;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
