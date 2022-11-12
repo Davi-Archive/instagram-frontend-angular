@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
+import { PublicInputComponent } from './public/public-input/public-input.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,15 +12,18 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
   declarations: [
     ButtonComponent,
     AvatarComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    PublicInputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     ButtonComponent,
     AvatarComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    PublicInputComponent
   ]
 })
 export class SharedModule { }
