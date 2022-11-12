@@ -1,0 +1,46 @@
+@import "../../../styles.scss";
+
+.mainHeader {
+  border-bottom: 0.5px solid var(--gray1);
+  .mainHeaderContent {
+    display: flex;
+    padding: 8px 16px;
+    align-items: center;
+
+    @media screen and (min-width: $breakpointDesktop) {
+      border: none;
+      margin-bottom: 35px;
+      justify-content: center;
+      .mainHeaderContent {
+        width: 60%;
+        margin: auto;
+      }
+      .searchBar {
+        flex: 0.43;
+      }
+    }
+  }
+  .searchBar {
+    position: relative;
+    display: flex;
+    flex: 1;
+    margin-left: 16px;
+    align-items: center;
+    .searchIcon {
+      position: absolute;
+      left: 8px;
+    }
+    input {
+      border: 0;
+      flex: 1;
+      background-color: var(--primaryColor3);
+      border-radius: 4px;
+      padding: 8px 8px 8px 36px;
+      font-size: 12px;
+      outline: none;
+      &:focus {
+        border: 1px solid var(--primaryColor);
+      }
+    }
+  }
+}
