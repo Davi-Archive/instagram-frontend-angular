@@ -6,7 +6,8 @@ import { UploadImageComponent } from './upload-image/upload-image.component';
 import { PublicInputComponent } from './public/public-input/public-input.component';
 import { FormsModule } from '@angular/forms';
 import { PublicPageComponent } from './public/public-page/public-page.component';
-
+import { FooterPublicPageComponent } from './public/footer-public-page/footer-public-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,18 +16,21 @@ import { PublicPageComponent } from './public/public-page/public-page.component'
     AvatarComponent,
     UploadImageComponent,
     PublicInputComponent,
-    PublicPageComponent
+    PublicPageComponent,
+    FooterPublicPageComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
-  ],
+    FormsModule,
+    RouterModule
+    ],
   exports: [
     ButtonComponent,
     AvatarComponent,
     UploadImageComponent,
     PublicInputComponent,
-    PublicPageComponent
+    PublicPageComponent,
+    FooterPublicPageComponent
   ]
 })
 export class SharedModule { }

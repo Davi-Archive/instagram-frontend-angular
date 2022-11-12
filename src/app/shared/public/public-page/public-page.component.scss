@@ -1,0 +1,21 @@
+.publicPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 32px;
+  .contentContainer {
+    width: 100%;
+    form {
+      app-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  @media screen and (min-width: var(--breakpointDesktop)) {
+    flex-direction: row;
+  }
+}
