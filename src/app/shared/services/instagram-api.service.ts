@@ -24,6 +24,6 @@ export class InstagramApiService {
   }
 
   private getUrl(url: string): string {
-    return `${this.instagramUrlApi}/${url}}`;
+    return `${this.instagramUrlApi}/${url}`;
   }
 }

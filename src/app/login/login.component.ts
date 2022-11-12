@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   public submit(): void {
+    //TODO Api integration
     console.log(this.form.value)
   }
 
