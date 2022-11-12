@@ -23,7 +23,6 @@ export class PublicInputComponent implements OnInit {
   }
 
   public getErrorMessage(): string {
-    console.log(this.referencesForm)
     if (!this.referencesForm?.errors) return ''
 
     if (this.referencesForm?.errors['required']) {
@@ -41,7 +40,7 @@ export class PublicInputComponent implements OnInit {
     if (this.referencesForm?.errors['confirmPassword']){
       return 'As senhas não conferem'
     }
-    
+
 
     return 'Problemas no Preenchimento'
   }

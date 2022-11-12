@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
@@ -8,9 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { PublicPageComponent } from './public/public-page/public-page.component';
 import { FooterPublicPageComponent } from './public/footer-public-page/footer-public-page.component';
 import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { RegisterComponent } from '../register/register.component';
 
 
 @NgModule({
+  providers:[
+    {
+      provide: 'INSTAGRAM_URL_API',
+      useValue: environment.instagramUrlApi
+    }
+  ],
   declarations: [
     ButtonComponent,
     AvatarComponent,
@@ -22,8 +31,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
-    ],
+    RouterModule,
+    HttpClientModule
+  ],
   exports: [
     ButtonComponent,
     AvatarComponent,

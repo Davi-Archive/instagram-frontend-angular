@@ -8,12 +8,13 @@
   </div>
 
   <div class="contentContainer">
-    <form (submit)="handleSubmit()">
+    <form>
         <ng-content select="[formContent]"></ng-content>
         <app-button
         [text]="textButtonSubmit"
         type="submit"
         classCss="publicButton"
+        (click)="handleSubmit()"
         ></app-button>
     </form>
     <ng-content select="[footer]"></ng-content>

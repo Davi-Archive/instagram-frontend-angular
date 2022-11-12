@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-public-page',
@@ -10,7 +10,8 @@ export class PublicPageComponent implements OnInit {
 
   @Input() customClassCSS: string = ''
   @Input() logoClass: string = ''
-  @Input() textButtonSubmit?:string;
+  @Input() textButtonSubmit?: string;
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +19,6 @@ export class PublicPageComponent implements OnInit {
 
 
   public handleSubmit(): void {
-    console.log('submit')
+    this.submitForm.emit();
   }
 }
