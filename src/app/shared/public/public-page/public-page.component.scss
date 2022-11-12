@@ -1,3 +1,5 @@
+@import "../../../../styles.scss";
+
 .publicPageContainer {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,24 @@
       }
     }
   }
-  @media screen and (min-width: var(--breakpointDesktop)) {
+  @media screen and (min-width: $breakpointDesktop) {
     flex-direction: row;
+    padding: 0 140px;
+    .containerLogo {
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      height: 40%;
+      .logo{
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+    .contentContainer {
+      flex: 1;
+      border: 1px solid var(--primaryColor);
+      border-radius: 26px;
+      padding: 56px;
+    }
   }
 }

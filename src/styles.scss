@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/fonts/fonts.scss";
 
+//variables sass, needs import
+$breakpointDesktop: 992px;
+
+//global variables
 :root {
   --fontRegular: "Biennale Regular";
   --fontBold: "Biennale Bold";
@@ -18,8 +22,7 @@
   --white: #fff;
   --red: #ff0000;
 
-
-  --breakpointDesktop: '992px';
+  --breakpointDesktop: "992px";
 }
 
 * {
@@ -49,4 +52,18 @@ input {
   color: var(--red);
   margin: 5px;
   font-size: 80%;
+}
+
+.desktop {
+  display: none;
+  @media screen and (min-width:$breakpointDesktop) {
+    display: block;
+  }
+}
+
+.mobile {
+  display: block;
+  @media screen and (min-width: $breakpointDesktop) {
+    display: none;
+  }
 }
