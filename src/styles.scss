@@ -41,6 +41,8 @@ body {
   @media screen and (min-width: $breakpointDesktop) {
     background-color: var(--gray);
     background-image: url("/assets/images/fundoDesktop.svg");
+    background-position: center;
+    background-size: cover;
   }
 }
 .hidden {

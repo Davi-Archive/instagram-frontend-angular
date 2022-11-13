@@ -88,7 +88,7 @@
       background-color: transparent;
       font-size: 14px;
       border: 0;
-      color: var(--primaryColor)
+      color: var(--primaryColor);
     }
   }
 }
@@ -122,10 +122,12 @@
 
       p.description {
         .showMore {
+          cursor:pointer;
           font-size: 12px;
           font-family: var(--fontBold);
           color: var(--primaryColor2);
         }
+
         .threeDotsPost {
           margin-left: -2px;
         }
