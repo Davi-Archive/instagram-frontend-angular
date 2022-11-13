@@ -45,6 +45,7 @@ import { PostDescriptionComponent } from './components/feed/post-description/pos
     PublicPageComponent,
     FooterPublicPageComponent,
     FeedComponent,
+    ButtonComponent
   ],
 })
 export class SharedModule {}

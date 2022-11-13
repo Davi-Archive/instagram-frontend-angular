@@ -7,8 +7,8 @@ import { ResponseInstagramApi } from '../../types/response-api-instagram.type';
 })
 export class FeedService extends InstagramApiService {
 
-  async loadPosts(): Promise<any> {
-    return this.get('feed');
+  async loadPosts(idUsuario?: string): Promise<any> {
+    return this.get(`feed${idUsuario ? `?id=` + idUsuario : ''}`);
   }
 
   async alternateLikeDislike(postId: string): Promise<ResponseInstagramApi> {

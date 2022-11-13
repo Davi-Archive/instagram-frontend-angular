@@ -62,7 +62,7 @@ export class AuthenticationService extends InstagramApiService {
 
     return {
       id: localStorage.getItem('id'),
-      nome: localStorage.getItem('nome'),
+      nome: localStorage.getItem('name'),
       email: localStorage.getItem('email'),
       avatar: localStorage.getItem('avatar')
     } as LoggedUser

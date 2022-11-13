@@ -7,8 +7,9 @@ import { MenuItem } from './item-menu.types';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent  {
+export class NavbarComponent {
 
+  private rotaAtiva: string = 'home';
   private routesMap: MenuItem = {
     home: {
       img: 'home',
@@ -16,11 +17,11 @@ export class NavbarComponent  {
     },
     publicacao: {
       img: 'publicacao',
-      routes: ['/login']
+      routes: ['/publicacao']
     },
     perfil: {
       img: 'usuario',
-      routes: ['/user']
+      routes: ['/perfil/1']
     }
   }
 
@@ -30,9 +31,18 @@ export class NavbarComponent  {
 
   public getImage(menu: string): string {
     const menuRoute = this.routesMap[menu];
-    const icon = menuRoute.routes.includes(this.router.url)
-      ? `${menuRoute.img}Ativo` : menuRoute.img
+
+    let icon = menuRoute.img
+
+    if (menuRoute.routes.includes(this.router.url) || (this.rotaAtiva == menu)) {
+      icon = menuRoute.routes.includes(this.router.url)
+        ? `${menuRoute.img}Ativo` : menuRoute.img
+      this.rotaAtiva = menu;
+    }
     return `assets/images/${icon}.svg`
+
+
+
   }
 
   public redirectTo(menu: string): void {

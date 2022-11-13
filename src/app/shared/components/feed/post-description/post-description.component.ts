@@ -22,7 +22,7 @@ export class PostDescriptionComponent {
   public descriptionCharatersLimit: number = descriptionCharatersLimit;
   public isMakingAnBackendCall: boolean = false;
 
-  constructor(private feedService:FeedService ) { }
+  constructor(private feedService: FeedService) { }
 
   public showFullDescription(): void {
     this.descriptionCharatersLimit = 99999;
@@ -64,7 +64,7 @@ export class PostDescriptionComponent {
   }
 
   public validateComment(): boolean {
-    return !this.isMakingAnBackendCall && this.currentComment.length > 3;
+    return !this.isMakingAnBackendCall && this.currentComment.trim().length >= 3;
   }
 
   public checkRowsNumber() {

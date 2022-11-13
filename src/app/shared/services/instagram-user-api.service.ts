@@ -6,11 +6,15 @@ import { InstagramApiService } from './instagram-api.service';
   providedIn: 'root',
 })
 export class InstagramUserApi extends InstagramApiService {
-  getUserData(): Promise<UserInstagram> {
+  public getUserData(): Promise<UserInstagram> {
     return this.get('usuario');
   }
 
-  searchUsers(filter: string): Promise<UserInstagram> {
+  public searchUsers(filter: string): Promise<UserInstagram> {
     return this.get(`pesquisa?filtro=${filter}`);
+  }
+
+  public obterInformacoesDoPerfil(idUsuario: string): Promise<UserInstagram> {
+    return this.get('pesquisa?id=' + idUsuario)
   }
 }

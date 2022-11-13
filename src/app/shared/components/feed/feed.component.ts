@@ -1,4 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
 import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
 import { FeedService } from './feed.service';
@@ -10,31 +11,56 @@ import { Post } from './post.type';
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent implements OnInit, OnChanges {
+
   public loggedUser: LoggedUser | null;
+  public posts: Array<Post> = [];
+
+  @Input() public usuario?: any;
 
   constructor(
     private authenticationService: AuthenticationService,
-    private feedService: FeedService
+    private feedService: FeedService,
+    private servicoRotaAtiva: ActivatedRoute
   ) {
     this.loggedUser = this.authenticationService.getLoggedUser()
   }
 
-  public posts: Array<Post> = [];
-
-  async ngOnInit(): Promise<void> {
-    try {
-      const { result } = await this.feedService.loadPosts();
-      this.posts = result.map((e: any) => ({
-        ...e,
-        estaCurtido: e.likes.includes(this.loggedUser?.id || ''),
-        quantidadeCurtidas: e.likes.length
-      }) as Post)
-    } catch (error: any) {
-      alert(error?.error?.error || 'Erro ao carregar o feed.')
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['usuario'].previousValue !== changes['usuario'].currentValue) {
+      this.carregarPostagens();
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('change')
+  ngOnInit(): void {
+    this.carregarPostagens();
+  }
+
+  async carregarPostagens() {
+    try {
+      let result;
+
+      if (this.usuario === null) {
+        return;
+      } else if (this.usuario) {
+        result = await this.feedService.loadPosts(
+          this.usuario._id
+        );
+      } else {
+        ({ result } = await this.feedService.loadPosts())
+      }
+
+      this.posts = result.map((postagem: any) => ({
+        ...postagem,
+        usuario: postagem.usuario || {
+          nome: this.usuario?.nome,
+          avatar: this.usuario?.avatar
+        },
+        estaCurtido: postagem.likes.includes(this.loggedUser?.id || ''),
+        quantidadeCurtidas: postagem.likes.length
+      }) as Post);
+      
+    } catch (e: any) {
+      alert(e.error?.erro || 'Erro ao carregar o feed!');
+    }
   }
 }

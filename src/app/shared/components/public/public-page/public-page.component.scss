@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   padding: 0px 32px;
+  background-color: var(--white);
 
   .contentContainer {
     width: 100%;
@@ -35,7 +36,7 @@
         max-width: 300px;
       }
     }
-    
+
     .contentContainer {
       flex: 1;
       border: 1px solid var(--primaryColor);
