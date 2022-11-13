@@ -12,7 +12,17 @@ import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 export class HeaderComponent implements OnInit {
 
   public searchTerm: string = '';
-  public searchResult: Array<UserInstagram> = []
+  public searchResult: Array<UserInstagram> = [];
+  /*   {
+      _id: '1',
+      nome: 'moke',
+      email: 'moke@moke',
+      avatar: '',
+      publicacoes: 0,
+      seguidores: 0,
+      seguindo: 0
+    }
+  ] */
   constructor(
     private router: Router,
     private apiUserInstagram: InstagramUserApi,
@@ -30,7 +40,7 @@ export class HeaderComponent implements OnInit {
 
   public async searchUsers(): Promise<void> {
     this.searchResult = [];
-    
+
     if (this.searchTerm.length < 3) return;
 
     try {
