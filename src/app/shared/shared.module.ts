@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ButtonComponent } from './button/button.component';
-import { AvatarComponent } from './avatar/avatar.component';
-import { UploadImageComponent } from './upload-image/upload-image.component';
-import { PublicInputComponent } from './public/public-input/public-input.component';
+import { ButtonComponent } from './components/button/button.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { FormsModule } from '@angular/forms';
-import { PublicPageComponent } from './public/public-page/public-page.component';
-import { FooterPublicPageComponent } from './public/footer-public-page/footer-public-page.component';
 import { RouterModule } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { RegisterComponent } from '../register/register.component';
 import { InstagramApiInterceptor } from './services/instagram-api-interceptor.service';
+import { FeedComponent } from './components/feed/feed.component';
+import { PublicInputComponent } from './components/public/public-input/public-input.component';
+import { PublicPageComponent } from './components/public/public-page/public-page.component';
+import { FooterPublicPageComponent } from './components/public/footer-public-page/footer-public-page.component';
 
 
 @NgModule({
@@ -32,7 +32,8 @@ import { InstagramApiInterceptor } from './services/instagram-api-interceptor.se
     UploadImageComponent,
     PublicInputComponent,
     PublicPageComponent,
-    FooterPublicPageComponent
+    FooterPublicPageComponent,
+    FeedComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +47,8 @@ import { InstagramApiInterceptor } from './services/instagram-api-interceptor.se
     UploadImageComponent,
     PublicInputComponent,
     PublicPageComponent,
-    FooterPublicPageComponent
+    FooterPublicPageComponent,
+    FeedComponent
   ]
 })
 export class SharedModule { }
