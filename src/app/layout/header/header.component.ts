@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
@@ -9,7 +9,7 @@ import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   public searchTerm: string = '';
   public searchResult: Array<UserInstagram> = [];
@@ -28,9 +28,6 @@ export class HeaderComponent implements OnInit {
     private apiUserInstagram: InstagramUserApi,
     private authenticationService: AuthenticationService
   ) { }
-
-  ngOnInit(): void {
-  }
 
 
   public goToHome(): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from './item-menu.types';
 
@@ -7,7 +7,7 @@ import { MenuItem } from './item-menu.types';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
 
   private routesMap: MenuItem = {
     home: {
@@ -26,8 +26,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+
 
   public getImage(menu: string): string {
     const menuRoute = this.routesMap[menu];

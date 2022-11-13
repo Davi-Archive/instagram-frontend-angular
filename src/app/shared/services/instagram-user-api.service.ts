@@ -1,18 +1,16 @@
-import { Injectable } from "@angular/core";
-import { UserInstagram } from "../types/user-instagram.types";
-import { InstagramApiService } from "./instagram-api.service";
+import { Injectable } from '@angular/core';
+import { UserInstagram } from '../types/user-instagram.types';
+import { InstagramApiService } from './instagram-api.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class InstagramUserApi extends InstagramApiService {
+  getUserData(): Promise<UserInstagram> {
+    return this.get('usuario');
+  }
 
-    getUserData(): Promise<UserInstagram> {
-        return this.get('usuario');
-    }
-
-    searchUsers(filter: string): Promise<UserInstagram> {
-        return this.get(`pesquisa?filtro=${filter}`);
-    }
-
+  searchUsers(filter: string): Promise<UserInstagram> {
+    return this.get(`pesquisa?filtro=${filter}`);
+  }
 }

@@ -13,18 +13,17 @@ import { PublicInputComponent } from './components/public/public-input/public-in
 import { PublicPageComponent } from './components/public/public-page/public-page.component';
 import { FooterPublicPageComponent } from './components/public/footer-public-page/footer-public-page.component';
 
-
 @NgModule({
   providers: [
     {
       provide: 'INSTAGRAM_URL_API',
-      useValue: environment.instagramUrlApi
+      useValue: environment.instagramUrlApi,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InstagramApiInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   declarations: [
     ButtonComponent,
@@ -33,14 +32,9 @@ import { FooterPublicPageComponent } from './components/public/footer-public-pag
     PublicInputComponent,
     PublicPageComponent,
     FooterPublicPageComponent,
-    FeedComponent
+    FeedComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule
-  ],
+  imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
   exports: [
     ButtonComponent,
     AvatarComponent,
@@ -48,7 +42,7 @@ import { FooterPublicPageComponent } from './components/public/footer-public-pag
     PublicInputComponent,
     PublicPageComponent,
     FooterPublicPageComponent,
-    FeedComponent
-  ]
+    FeedComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

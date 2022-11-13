@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication/authentication.service';
 
@@ -7,7 +7,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
   public form: FormGroup;
   constructor(
@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-  }
+
 
 }

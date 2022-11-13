@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-public-page',
   templateUrl: './public-page.component.html',
   styleUrls: ['./public-page.component.scss']
 })
-export class PublicPageComponent implements OnInit {
+export class PublicPageComponent {
 
 
   @Input() customClassCSS: string = ''
@@ -14,8 +14,7 @@ export class PublicPageComponent implements OnInit {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 
   public handleSubmit(): void {

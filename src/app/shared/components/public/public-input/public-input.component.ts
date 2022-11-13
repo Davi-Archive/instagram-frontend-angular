@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { AbstractControl } from '@angular/forms';
   templateUrl: './public-input.component.html',
   styleUrls: ['./public-input.component.scss']
 })
-export class PublicInputComponent implements OnInit {
+export class PublicInputComponent {
 
   @Input() public referencesForm?: AbstractControl;
   @Input() public image?: string
@@ -14,8 +14,6 @@ export class PublicInputComponent implements OnInit {
   @Input() public placeholder?: string
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
   public onInputChange(event: Event): void {
     this.referencesForm?.setValue(event);

@@ -1,22 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+  styleUrls: ['./avatar.component.scss'],
 })
-export class AvatarComponent implements OnInit {
-
+export class AvatarComponent {
   @Input() src?: string;
   @Input() customClassName: string = '';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+
 
   public getAvatar(): string {
     if (this.src) return this.src;
 
-    return '/assets/images/avatar.svg'
+    return '/assets/images/avatar.svg';
   }
 }

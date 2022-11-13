@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { AbstractControl } from '@angular/forms';
   templateUrl: './upload-image.component.html',
   styleUrls: ['./upload-image.component.scss']
 })
-export class UploadImageComponent implements OnInit {
+export class UploadImageComponent {
 
   @Input() public referencesformControl?: AbstractControl;
   @Input() public placeholderImage?: string;
@@ -17,8 +17,7 @@ export class UploadImageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
   public changeImage(event: any): void {
     if (event.target.files && event.target.files.length) {
