@@ -16,9 +16,9 @@
   <div class="postFooter">
     <div class="postAction">
       <img
-      (click)="handleLikeButton()"
+        (click)="handleLikeButton()"
         class="iconComment"
-       [src]="getLikeImage()"
+        [src]="getLikeImage()"
         alt="Icone curtir"
       />
       <img
@@ -66,7 +66,10 @@
   </div>
 
   <div class="makeComment" *ngIf="alternateShowCommentBox">
-    <app-avatar customClassName="feedDesktop" [src]="loggedUser?.avatar"></app-avatar>
+    <app-avatar
+      customClassName="feedDesktop"
+      [src]="loggedUser?.avatar"
+    ></app-avatar>
     <textarea
       (keyup)="checkRowsNumber()"
       (keyup.enter)="makeComment()"
@@ -76,7 +79,12 @@
       placeholder="Adicione um comentário..."
     ></textarea>
 
-    <button (click)="makeComment()" type="button" class="btnPost desktop">
+    <button
+      [disabled]="!validateComment()"
+      (click)="makeComment()"
+      type="button"
+      class="btnPost desktop"
+    >
       Publicar
     </button>
   </div>

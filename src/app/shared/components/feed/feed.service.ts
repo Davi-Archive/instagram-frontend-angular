@@ -11,7 +11,11 @@ export class FeedService extends InstagramApiService {
     return this.get('feed');
   }
 
-  async alternateLikeDislike(postId:string):Promise<ResponseInstagramApi>{
-    return this.put(`like?id=${postId}`,{});
+  async alternateLikeDislike(postId: string): Promise<ResponseInstagramApi> {
+    return this.put(`like?id=${postId}`, {});
+  }
+
+  async addCommentToPost(postId: string, comment: string): Promise<any> {
+    return this.put(`comments?id=${postId}`, { comentario: comment })
   }
 }

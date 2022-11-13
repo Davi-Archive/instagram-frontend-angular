@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
 import { FeedService } from '../feed.service';
 import { Post } from '../post.type';
@@ -18,9 +19,10 @@ export class PostDescriptionComponent {
   public quantityOfRowsTextarea: number = 1;
   public currentComment: string = ''
   public alternateShowCommentBox: boolean = false;
-
   public descriptionCharatersLimit: number = descriptionCharatersLimit;
-  constructor(private feedService: FeedService) { }
+  public isMakingAnBackendCall: boolean = false;
+
+  constructor(private feedService:FeedService ) { }
 
   public showFullDescription(): void {
     this.descriptionCharatersLimit = 99999;
@@ -38,8 +40,31 @@ export class PostDescriptionComponent {
     return `assets/images/${baseIcon}`;
   }
 
-  public makeComment(): void {
-    console.log('make comment')
+  public async makeComment() {
+    if (!this.validateComment()) return;
+    this.isMakingAnBackendCall = true;
+
+    try {
+      await this.feedService.addCommentToPost(
+        this.post._id,
+        this.currentComment);
+
+      this.post.comentarios.push({
+        comentario: this.currentComment,
+        nome: this.loggedUser?.nome
+      })
+
+      this.currentComment = '';
+      this.changeExibitionCommentBox();
+
+      this.isMakingAnBackendCall = false;
+    } catch (error: any) {
+      alert(error?.error?.error || 'Erro ao fazer comentário.')
+    }
+  }
+
+  public validateComment(): boolean {
+    return !this.isMakingAnBackendCall && this.currentComment.length > 3;
   }
 
   public checkRowsNumber() {
