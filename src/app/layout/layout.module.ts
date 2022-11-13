@@ -17,10 +17,13 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent
   ]
 })
 export class LayoutModule { }

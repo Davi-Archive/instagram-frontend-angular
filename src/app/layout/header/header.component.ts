@@ -29,6 +29,8 @@ export class HeaderComponent implements OnInit {
 
 
   public async searchUsers(): Promise<void> {
+    this.searchResult = [];
+    
     if (this.searchTerm.length < 3) return;
 
     try {

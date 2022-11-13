@@ -14,13 +14,13 @@ export class NavbarComponent implements OnInit {
       img: 'home',
       routes: ['/']
     },
-    post: {
+    publicacao: {
       img: 'publicacao',
-      routes: []
+      routes: ['/login']
     },
-    profile: {
+    perfil: {
       img: 'usuario',
-      routes: []
+      routes: ['/user']
     }
   }
 
@@ -36,4 +36,8 @@ export class NavbarComponent implements OnInit {
     return `assets/images/${icon}.svg`
   }
 
+  public redirectTo(menu: string): void {
+    const menuRoute = this.routesMap[menu]
+    this.router.navigateByUrl(menuRoute.routes[0])
+  }
 }
