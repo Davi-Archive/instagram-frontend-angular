@@ -1,1 +1,44 @@
-<p>feed works!</p>
+<div class="feedContainer">
+  <div *ngFor="let post of posts" class="containerPost">
+    <a [routerLink]="'/perfil/' + post.idUsuario">
+      <div class="headerPost">
+        <app-avatar [src]="post.usuario?.avatar"></app-avatar>
+        <strong>{{ post.usuario?.nome }}</strong>
+      </div>
+    </a>
+
+    <div class="photoPost">
+      <img [src]="post.foto" />
+    </div>
+
+    <div class="postFooter">
+      <div class="postAction">
+        <img class="iconComment" src="assets/images/curtir.svg" alt="Icone curtir" />
+        <img src="assets/images/comentario.svg" alt="Icone curtir" />
+        <span class="likes">
+          Curtido por <strong>{{ post.quantidadeCurtidas }} pessoas</strong>
+        </span>
+      </div>
+
+      <div class="postDescription">
+        <strong class="userName">
+          {{ post.usuario?.nome }}
+        </strong>
+        <p class="description">
+          {{ post.descricao }}
+        </p>
+      </div>
+
+      <div class="commentsContainer">
+        <div *ngFor="let comment of post.comentarios" class="comment">
+          <strong class="userName">
+            {{ comment.nome }}
+          </strong>
+          <p class="description">
+            {{ comment.comentario }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
