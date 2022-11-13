@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@import "../../../../../styles.scss";
 
 .mainHeader {
     border-bottom: 0.5px solid var(--gray1);
@@ -46,7 +46,7 @@
     .searchResultContainer {
         position: absolute;
         border-top: 0.5px solid var(--gray1);
-        background-color: var(--branco);
+        background-color: var(--white);
         width: 100%;
 
         .result {

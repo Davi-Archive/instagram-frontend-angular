@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { AuthenticationService } from 'src/app/authentication/authentication.service';
-import { LoggedUser } from 'src/app/authentication/logged-user.types';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
+import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
+import { FeedService } from './feed.service';
 import { Post } from './post.type';
 
 @Component({
@@ -8,53 +9,32 @@ import { Post } from './post.type';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit, OnChanges {
   public loggedUser: LoggedUser | null;
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private feedService: FeedService
+  ) {
     this.loggedUser = this.authenticationService.getLoggedUser()
   }
 
-  public posts: Array<Post> = [
-    {
-      descricao:
-        'Aves são uma classe de seres vivos e penas, um bico sem dentes, oviparidade de casca rígida, elevado m. ',
-      quantidadeCurtidas: 32,
-      foto: 'https://www.petz.com.br/blog/wp-content/uploads/2022/05/passaro-tuim-interna-1.jpg',
-      usuario: {
-        nome: 'davi',
-      },
-      comentarios: [
-        {
-          nome: 'amigo',
-          comentario: 'cool',
-        },
-        {
-          nome: 'davi',
-          comentario: 'cool',
-        },
-      ],
-    } as Post,
-    {
-      descricao: 'eu não sou bomzinho',
-      quantidadeCurtidas: 32,
-      foto: 'https://www.petz.com.br/blog/wp-content/uploads/2020/01/passaros-domesticos.jpg',
-      usuario: {
-        nome: 'davi',
-      },
-      comentarios: [
-        {
-          nome: 'Loro',
-          comentario: 'Claro que é bomzinho',
-        },
-        {
-          nome: 'davi',
-          comentario: 'cool',
-        },
-      ],
-    } as Post,
-  ];
+  public posts: Array<Post> = [];
 
+  async ngOnInit(): Promise<void> {
+    try {
+      const { result } = await this.feedService.loadPosts();
+      this.posts = result.map((e: any) => ({
+        ...e,
+        estaCurtido: e.likes.includes(this.loggedUser?.id || ''),
+        quantidadeCurtidas: e.likes.length
+      }) as Post)
+    } catch (error: any) {
+      alert(error?.error?.error || 'Erro ao carregar o feed.')
+    }
+  }
 
-
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('change')
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { LoggedUser } from 'src/app/authentication/logged-user.types';
+import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
+import { FeedService } from '../feed.service';
 import { Post } from '../post.type';
 
 const descriptionCharatersLimit = 90;
@@ -19,7 +20,7 @@ export class PostDescriptionComponent {
   public alternateShowCommentBox: boolean = false;
 
   public descriptionCharatersLimit: number = descriptionCharatersLimit;
-  constructor() { }
+  constructor(private feedService: FeedService) { }
 
   public showFullDescription(): void {
     this.descriptionCharatersLimit = 99999;
@@ -43,5 +44,26 @@ export class PostDescriptionComponent {
 
   public checkRowsNumber() {
     this.quantityOfRowsTextarea = this.currentComment.length > 0 ? 2 : 1
+  }
+
+  public async handleLikeButton() {
+    try {
+      await this.feedService.alternateLikeDislike(this.post._id)
+
+      if (this.post.estaCurtido) {
+        this.post.quantidadeCurtidas--;
+      } else {
+        this.post.quantidadeCurtidas++;
+      }
+
+      this.post.estaCurtido = !this.post.estaCurtido;
+
+    } catch (error: any) {
+      alert(error?.error?.error || "Erro ao Curtir/Descurtir")
+    }
+  }
+
+  public getLikeImage(): string {
+    return `assets/images/${this.post.estaCurtido ? 'descurtir.svg' : 'curtir.svg'}`
   }
 }

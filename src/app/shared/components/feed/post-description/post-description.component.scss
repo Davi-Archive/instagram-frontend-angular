@@ -133,6 +133,9 @@
         }
       }
       .postAction {
+        > img {
+          cursor:pointer;
+        }
         .likes {
           font-size: 12px;
 

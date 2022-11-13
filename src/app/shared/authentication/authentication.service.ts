@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { InstagramApiService } from '../shared/services/instagram-api.service';
-import { InstagramUserApi } from '../shared/services/instagram-user-api.service';
+import { InstagramApiService } from '../services/instagram-api.service';
+import { InstagramUserApi } from '../services/instagram-user-api.service';
 import { InstagramCredentials } from './instagram-credentials.type';
 import { LoggedUser } from './logged-user.types';
 import { ResponseLoginInstagram } from './login-response-instagram.type';

@@ -16,8 +16,9 @@
   <div class="postFooter">
     <div class="postAction">
       <img
+      (click)="handleLikeButton()"
         class="iconComment"
-        src="assets/images/curtir.svg"
+       [src]="getLikeImage()"
         alt="Icone curtir"
       />
       <img

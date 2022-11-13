@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
 import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
 import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 
