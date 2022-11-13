@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { InstagramApiService } from '../shared/services/instagram-api.service';
 import { InstagramUserApi } from '../shared/services/instagram-user-api.service';
 import { InstagramCredentials } from './instagram-credentials.type';
+import { LoggedUser } from './logged-user.types';
 import { ResponseLoginInstagram } from './login-response-instagram.type';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthenticationService extends InstagramApiService {
     protected _http: HttpClient,
     @Inject('INSTAGRAM_URL_API') private _instagramUrlApi: string,
     private router: Router,
-    private userApiService:InstagramUserApi
+    private userApiService: InstagramUserApi
   ) {
     super(_http, _instagramUrlApi);
   }
@@ -33,8 +34,8 @@ export class AuthenticationService extends InstagramApiService {
     //more user info TODO
     const userData = await this.userApiService.getUserData();
     localStorage.setItem("id", userData._id)
-    localStorage.setItem('name',userData.nome)
-    if(userData.avatar){
+    localStorage.setItem('name', userData.nome)
+    if (userData.avatar) {
       localStorage.setItem("avatar", userData.avatar)
     }
 
@@ -49,11 +50,21 @@ export class AuthenticationService extends InstagramApiService {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
+    localStorage.removeItem('avatar')
+    localStorage.removeItem('id')
 
 
     this.router.navigateByUrl('/login')
   }
 
+  public getLoggedUser(): LoggedUser | null {
+    if (!this.isLogged()) return null;
 
-  //TODO user details
+    return {
+      id: localStorage.getItem('id'),
+      nome: localStorage.getItem('nome'),
+      email: localStorage.getItem('email'),
+      avatar: localStorage.getItem('avatar')
+    } as LoggedUser
+  }
 }

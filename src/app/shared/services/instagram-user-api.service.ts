@@ -11,4 +11,8 @@ export class InstagramUserApi extends InstagramApiService {
         return this.get('usuario');
     }
 
+    searchUsers(filter: string): Promise<UserInstagram> {
+        return this.get(`pesquisa?filtro=${filter}`);
+    }
+
 }

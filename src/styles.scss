@@ -37,6 +37,12 @@ body {
   height: 100%;
 }
 
+body {
+  @media screen and (min-width: $breakpointDesktop) {
+    background-color: var(--gray);
+    background-image: url('/assets/images/fundoDesktop.svg');
+  }
+}
 .hidden {
   display: none !important;
 }
@@ -56,7 +62,7 @@ input {
 
 .desktop {
   display: none;
-  @media screen and (min-width:$breakpointDesktop) {
+  @media screen and (min-width: $breakpointDesktop) {
     display: block;
   }
 }
@@ -68,12 +74,11 @@ input {
   }
 }
 
-.internalLayout{
-  display:flex;
+.internalLayout {
+  display: flex;
   flex-direction: column;
-  height:100%;
-  .internalContent{
-    flex:1;
-    
+  height: 100%;
+  .internalContent {
+    flex: 1;
   }
 }

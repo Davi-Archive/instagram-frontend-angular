@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InstagramApiService } from 'src/app/shared/services/instagram-api.service';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
 import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 
 @Component({
@@ -14,8 +15,9 @@ export class HeaderComponent implements OnInit {
   public searchResult: Array<UserInstagram> = []
   constructor(
     private router: Router,
-    private apUserInstagram: InstagramApiService
-    ) { }
+    private apiUserInstagram: InstagramUserApi,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -30,9 +32,11 @@ export class HeaderComponent implements OnInit {
     if (this.searchTerm.length < 3) return;
 
     try {
-      const usersReturned
+      const usersReturned: any = await this.apiUserInstagram.searchUsers(this.searchTerm.toLocaleLowerCase())
+      const userLoggedIn = this.authenticationService.getLoggedUser();
+      this.searchResult = await usersReturned.filter((e: any) => e._id !== userLoggedIn?.id)
     } catch (error: any) {
-      const errorMessage = error.error.error
+      const errorMessage = error?.error?.error || 'Erro ao procurar usuaários'
       alert(errorMessage);
     }
     console.log(this.searchTerm)

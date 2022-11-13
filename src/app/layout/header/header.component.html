@@ -8,7 +8,7 @@
       />
     </div>
 
-    <div class="searchBar">
+    <div class="searchBarContainer">
       <div class="searchIcon">
         <img src="assets/images/lupa.svg" alt="Icone de Lupa" />
       </div>
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="searchResult" *ngIf="searchResult.length > 0">
+  <div class="searchResultContainer" *ngIf="searchResult.length > 0">
     <div
       *ngFor="let user of searchResult"
       class="result"
