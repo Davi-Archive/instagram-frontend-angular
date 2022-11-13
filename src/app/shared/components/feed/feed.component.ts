@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { LoggedUser } from 'src/app/authentication/logged-user.types';
 import { Post } from './post.type';
 
 @Component({
@@ -6,7 +8,13 @@ import { Post } from './post.type';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent  {
+export class FeedComponent {
+  public loggedUser: LoggedUser | null;
+
+  constructor(private authenticationService: AuthenticationService) {
+    this.loggedUser = this.authenticationService.getLoggedUser()
+  }
+
   public posts: Array<Post> = [
     {
       descricao:
@@ -46,7 +54,7 @@ export class FeedComponent  {
       ],
     } as Post,
   ];
-  constructor() {}
 
-  
+
+
 }

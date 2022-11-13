@@ -12,6 +12,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { PublicInputComponent } from './components/public/public-input/public-input.component';
 import { PublicPageComponent } from './components/public/public-page/public-page.component';
 import { FooterPublicPageComponent } from './components/public/footer-public-page/footer-public-page.component';
+import { PostDescriptionComponent } from './components/feed/post-description/post-description.component';
 
 @NgModule({
   providers: [
@@ -33,6 +34,7 @@ import { FooterPublicPageComponent } from './components/public/footer-public-pag
     PublicPageComponent,
     FooterPublicPageComponent,
     FeedComponent,
+    PostDescriptionComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
   exports: [

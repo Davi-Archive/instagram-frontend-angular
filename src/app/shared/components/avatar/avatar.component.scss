@@ -1,7 +1,14 @@
-.avatar{
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 8px;
+@import "../../../../styles.scss";
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 8px;
+
+  &.feedDesktop {
+    height: 50px;
+    width: 50px;
+  }
 }

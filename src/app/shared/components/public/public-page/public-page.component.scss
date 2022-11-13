@@ -7,8 +7,10 @@
   align-items: center;
   justify-content: center;
   padding: 0px 32px;
+
   .contentContainer {
     width: 100%;
+
     form {
       app-button {
         display: flex;
@@ -17,19 +19,23 @@
       }
     }
   }
+
   @media screen and (min-width: $breakpointDesktop) {
     flex-direction: row;
     padding: 0 140px;
+
     .containerLogo {
       flex: 2;
       display: flex;
       justify-content: center;
       height: 40%;
+
       .logo {
         width: 100%;
         max-width: 300px;
       }
     }
+    
     .contentContainer {
       flex: 1;
       border: 1px solid var(--primaryColor);

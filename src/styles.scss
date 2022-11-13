@@ -88,6 +88,9 @@ strong {
   color: var(--gray4);
 }
 
-.desktopContent{
-  
+.desktopContent {
+  @media screen and (min-width: $breakpointDesktop) {
+    width: 30%;
+    margin: auto;
+  }
 }
