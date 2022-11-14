@@ -1,27 +1,38 @@
-# DevagramAngular
+# Devagram
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+Instagram like project done with Angular.
 
-## Development server
+## Used Technologies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. **Angular:** 14.2.9.
+1. **Angular CLI:** 14.2.9
+1. **Nodejs:** 18.12.1
+1. **SASS:** 1.56.0
 
-## Code scaffolding
+## Setting up the local server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Using [GIT](https://git-scm.com/), Clone the repository with the command:
+```bash
+git clone https://github.com/d1av/instagram-frontend-angular.git
+```
+2. Create an .env.local in your cloned local repository folder
+3. Copy the variables from src/environments
+4. Change the variable in your .env.local to match your API url
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+<strong style="font-size: 30px">Local Server
+</strong>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+First, run the development server:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
 
-## Further help
+#and
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
