@@ -20,11 +20,33 @@
       right: 0px;
       left: 90px;
       bottom: 5px;
-      margin:auto;
+      margin: auto;
     }
   }
   .containerPreview {
     border: 1px solid var(´--gray);
     border-radius: 50%;
+  }
+
+  &.uploadImagemEdicaoPerfil {
+    .containerPreview {
+      text-align: center;
+      padding: 14px;
+
+      .avatarEdicaoPerfil {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .ngContent {
+      text-align: center;
+      
+      span {
+        color: var(--primaryColor);
+      }
+    }
   }
 }

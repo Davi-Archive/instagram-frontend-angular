@@ -22,7 +22,7 @@ import { RegisterModule } from './register/register.module';
     ReactiveFormsModule,
     RouterModule,
     LoginModule,
-    RegisterModule
+    RegisterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

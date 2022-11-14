@@ -6,18 +6,22 @@ import { ProfileComponent } from './profile.component';
 import { SharedModule } from '../shared/shared.module';
 import { LayoutModule } from '../shared/components/layout/layout.module';
 import { CabecalhoPerfilComponent } from './cabecalho-perfil/cabecalho-perfil.component';
+import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    CabecalhoPerfilComponent
+    CabecalhoPerfilComponent,
+    EditarPerfilComponent
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ]
 })
 export class ProfileModule { }

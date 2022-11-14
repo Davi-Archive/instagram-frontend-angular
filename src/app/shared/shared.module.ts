@@ -13,6 +13,7 @@ import { PublicInputComponent } from './components/public/public-input/public-in
 import { PublicPageComponent } from './components/public/public-page/public-page.component';
 import { FooterPublicPageComponent } from './components/public/footer-public-page/footer-public-page.component';
 import { PostDescriptionComponent } from './components/feed/post-description/post-description.component';
+import { CabecalhoComAcoesComponent } from './components/cabecalho-com-acoes/cabecalho-com-acoes.component';
 
 @NgModule({
   providers: [
@@ -35,6 +36,8 @@ import { PostDescriptionComponent } from './components/feed/post-description/pos
     FooterPublicPageComponent,
     FeedComponent,
     PostDescriptionComponent,
+    CabecalhoComAcoesComponent,
+
   ],
   imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
   exports: [
@@ -45,7 +48,9 @@ import { PostDescriptionComponent } from './components/feed/post-description/pos
     PublicPageComponent,
     FooterPublicPageComponent,
     FeedComponent,
-    ButtonComponent
+    ButtonComponent,
+    PostDescriptionComponent,
+    CabecalhoComAcoesComponent,
   ],
 })
 export class SharedModule {}

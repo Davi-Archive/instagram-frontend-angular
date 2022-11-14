@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
@@ -31,7 +32,17 @@ export class CabecalhoPerfilComponent implements OnInit {
     this.router.navigateByUrl('/')
   }
 
-  public async alternarSeguir() {
+  public async manipularCliqueDoBotaoPrincipal() {
+    if (this.estaPerfilPessoal) {
+      this.redirecionarParaTelaDeEdicaoPerfil();
+      return;
+    }
+
+    await this.alternarSeguir()
+
+  }
+
+  private async alternarSeguir(): Promise<void> {
     if (!this.usuario) return;
 
     try {
@@ -40,6 +51,10 @@ export class CabecalhoPerfilComponent implements OnInit {
     } catch (error: any) {
       alert(error?.error?.error || 'Erro ao Seguir/Deixar de seguir.')
     }
+  }
+
+  private redirecionarParaTelaDeEdicaoPerfil() {
+    this.router.navigateByUrl('/perfil/pessoal/editar');
   }
 
   public obterTextoBotaoPrincipal(): string {

@@ -4,10 +4,14 @@
 >
   <div class="containerPreview" *ngIf="placeholderImage">
     <img
-    [src]="placeholderImage"
-    alt="Imagem pre visualização"
-    [class]="classImagePreviewCSS"
-     />
+      [src]="placeholderImage"
+      alt="Imagem pre visualização"
+      [class]="classImagePreviewCSS"
+    />
+  </div>
+
+  <div class="ngContent">
+    <ng-content ></ng-content>
   </div>
 
   <input

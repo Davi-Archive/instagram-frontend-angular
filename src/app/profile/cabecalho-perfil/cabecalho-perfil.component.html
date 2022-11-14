@@ -10,36 +10,36 @@
     <h3>{{ usuario?.nome }}</h3>
 
     <img
-    src="assets/images/logout.svg"
-    alt="Icone de Logout"
-    (click)="logout()"
-    *ngIf="estaPerfilPessoal" />
+      src="assets/images/logout.svg"
+      alt="Icone de Logout"
+      (click)="logout()"
+      *ngIf="estaPerfilPessoal"
+    />
   </div>
   <div class="estatisticas">
     <app-avatar [src]="usuario?.avatar"></app-avatar>
 
-
-  <div class="conteudoEstatisticas">
-    <div class="numeros">
-      <div class="numero">
-        <strong>{{usuario?.publicacoes}}</strong>
-        <span>Publicações</span>
+    <div class="conteudoEstatisticas">
+      <div class="numeros">
+        <div class="numero">
+          <strong>{{ usuario?.publicacoes }}</strong>
+          <span>Publicações</span>
+        </div>
+        <div class="numero">
+          <strong>{{ usuario?.seguidores }}</strong>
+          <span>Seguidores</span>
+        </div>
+        <div class="numero">
+          <strong>{{ usuario?.seguindo }}</strong>
+          <span>Seguindo</span>
+        </div>
       </div>
-      <div class="numero">
-        <strong>{{usuario?.seguidores}}</strong>
-        <span>Seguidores</span>
-      </div>
-      <div class="numero">
-       <strong>{{usuario?.seguindo}}</strong>
-        <span>Seguindo</span>
-      </div>
+      <app-button
+        classCss="btnCabecalhoPerfil"
+        [text]="obterTextoBotaoPrincipal()"
+        (click)="manipularCliqueDoBotaoPrincipal()"
+        [color]="obterCorBotaoPrincipal()"
+      ></app-button>
     </div>
-    <app-button
-    classCss="btnCabecalhoPerfil"
-    [text]="obterTextoBotaoPrincipal()"
-    (click)="alternarSeguir()"
-    [color]="obterCorBotaoPrincipal()"
-    ></app-button>
-     </div>
   </div>
 </div>
