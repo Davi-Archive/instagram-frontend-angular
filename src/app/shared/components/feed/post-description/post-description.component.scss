@@ -60,6 +60,8 @@
     }
 
     .commentsContainer {
+      max-height: 100px;
+      overflow-y: auto;
       .comment {
         margin-bottom: 5px;
 
@@ -122,7 +124,7 @@
 
       p.description {
         .showMore {
-          cursor:pointer;
+          cursor: pointer;
           font-size: 12px;
           font-family: var(--fontBold);
           color: var(--primaryColor2);
@@ -134,7 +136,7 @@
       }
       .postAction {
         > img {
-          cursor:pointer;
+          cursor: pointer;
         }
         .likes {
           font-size: 12px;

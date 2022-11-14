@@ -15,9 +15,8 @@ Instagram like project done with Angular.
 ```bash
 git clone https://github.com/d1av/instagram-frontend-angular.git
 ```
-2. Create an .env.local in your cloned local repository folder
-3. Copy the variables from src/environments
-4. Change the variable in your .env.local to match your API url
+2. Change the variables from src/environments.ts, to your API url.
+
 
 
 

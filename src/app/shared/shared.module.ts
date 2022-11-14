@@ -14,6 +14,7 @@ import { PublicPageComponent } from './components/public/public-page/public-page
 import { FooterPublicPageComponent } from './components/public/footer-public-page/footer-public-page.component';
 import { PostDescriptionComponent } from './components/feed/post-description/post-description.component';
 import { CabecalhoComAcoesComponent } from './components/cabecalho-com-acoes/cabecalho-com-acoes.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   providers: [
@@ -37,6 +38,7 @@ import { CabecalhoComAcoesComponent } from './components/cabecalho-com-acoes/cab
     FeedComponent,
     PostDescriptionComponent,
     CabecalhoComAcoesComponent,
+    LoadingComponent,
 
   ],
   imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
