@@ -1,16 +1,29 @@
 @import "../../../../styles.scss";
 
 .containerUploadImage {
+  &.paginaPublicacao {
+    .containerPreview {
+      .imagemPrevisualizacaoPublicacao,
+      .imagemPrevisualizacaoPublicacao2Etapa {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+      }
+    }
+  }
   &.registerPageUpload {
     text-align: center;
     cursor: pointer;
     object-fit: cover;
     position: relative;
-    .avatarPreview {
+    .avatarPreview,
+    .imagemPrevisualizacaoPublicacao,
+    .imagemPrevisualizacaoPublicacao2Etapa {
       width: 120px;
       height: 120px;
       border: 1px solid var(--gray1);
       border-radius: 50%;
+      object-fit: cover;
     }
 
     &::after {
@@ -28,6 +41,7 @@
   .containerPreview {
     border: 1px solid var(--gray);
     border-radius: 50%;
+    object-fit: cover;
   }
 
   &.uploadImagemEdicaoPerfil {
@@ -39,7 +53,7 @@
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
 
@@ -51,10 +65,10 @@
       }
     }
     @media screen and (min-width: $breakpointDesktop) {
-      .containerPreview{
-        .avatarEdicaoPerfil{
-          width:120px;
-          height:120px;
+      .containerPreview {
+        .avatarEdicaoPerfil {
+          width: 120px;
+          height: 120px;
         }
       }
     }

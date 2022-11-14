@@ -10,6 +10,7 @@
       align-items: center;
       text-align: center;
       padding-top: 10%;
+      object-fit: contain;
     }
 
     .segundaEtapa {
@@ -18,7 +19,8 @@
       margin: auto;
       padding: 14px;
       border-bottom: 0.5px solid var(--gray1);
-
+      object-fit: contain;
+      
       textarea {
         resize: none;
         border: none;
