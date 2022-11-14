@@ -96,3 +96,14 @@ strong {
     margin: auto;
   }
 }
+
+.linhaHorizontal {
+    height: 0.5px;
+    border: none;
+    background-color: var(--gray1);
+    margin: 0 auto;
+
+    @media screen and (min-width: $breakpointDesktop) {
+        width: 90%;
+    }
+}

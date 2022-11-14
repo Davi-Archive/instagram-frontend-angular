@@ -41,8 +41,12 @@ export class EditarPerfilComponent implements OnInit {
     console.log('editar Perfil')
   }
 
-  public limparInputNome(){
+  public limparInputNome() {
     this.obterReferenciaInput('nome').setValue('')
+  }
+
+  public manipularAtualizacaoImagem(event: string): void {
+
   }
 
 }

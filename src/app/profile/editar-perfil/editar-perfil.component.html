@@ -12,25 +12,33 @@
           [desabilitarAcaoDireita]="obterReferenciaInput('nome').invalid"
         ></app-cabecalho-com-acoes>
 
+        <hr class="linhaHorizontal" />
+
         <div class="edicaoAvatar">
           <app-upload-image
             [referencesformControl]="obterReferenciaInput('file')"
             [placeholderImage]="usuarioLogado?.avatar"
             classImagePreviewCSS="avatarEdicaoPerfil"
             containerCSS="uploadImagemEdicaoPerfil"
-
+            (updateImage)="manipularAtualizacaoImagem($event)"
           >
             <span>Alterar foto do perfil</span>
           </app-upload-image>
         </div>
 
+        <hr class="linhaHorizontal" />
+
         <div class="edicaoNomeUsuario">
-          <label>Nome</label>
-          <input type="text" formControlName="nome"/>
-          <img
-          (click)="limparInputNome()"
-          src="assets/images/limpar.svg"
-          alt="icone limpar" />
+          <div class="conteudoEdicaoNome">
+            <label>Nome</label>
+            <input type="text" formControlName="nome" />
+            <img
+              (click)="limparInputNome()"
+              src="assets/images/limpar.svg"
+              alt="icone limpar"
+            />
+          </div>
+          <hr class="linhaHorizontal" />
         </div>
       </div>
     </div>
