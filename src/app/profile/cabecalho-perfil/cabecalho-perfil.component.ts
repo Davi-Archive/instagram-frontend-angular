@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
-import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
 import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
 import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 
@@ -17,15 +16,18 @@ export class CabecalhoPerfilComponent implements OnInit {
   public estaPerfilPessoal: boolean = false;
 
   constructor(
+    private rotaAtiva: ActivatedRoute,
     private router: Router,
     private servicoUsuario: InstagramUserApi,
     private autenticacaoService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
-    if (this.router.url === '/perfil/pessoal') {
-      this.estaPerfilPessoal = true
-    }
+    this.rotaAtiva.url.subscribe(() => {
+      if (this.router.url === '/perfil/pessoal') {
+        this.estaPerfilPessoal = true
+      }
+    })
   }
 
   public voltarParaHome() {

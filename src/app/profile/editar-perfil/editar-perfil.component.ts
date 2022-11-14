@@ -14,6 +14,8 @@ export class EditarPerfilComponent implements OnInit {
 
   public usuarioLogado?: LoggedUser | null;
   public form: FormGroup;
+  public imagemPrevisualizacao?: string
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -53,6 +55,11 @@ export class EditarPerfilComponent implements OnInit {
 
       await this.usuarioApi.atualizarPerfil(payload);
       localStorage.setItem('nome', valorFormulario.nome)
+      if (this.imagemPrevisualizacao) {
+        localStorage.setItem('avatar', this.imagemPrevisualizacao);
+      }
+
+
 
       this.router.navigateByUrl('/perfil/pessoal')
     } catch (error: any) {
@@ -64,8 +71,8 @@ export class EditarPerfilComponent implements OnInit {
     this.obterReferenciaInput('nome').setValue('')
   }
 
-  public manipularAtualizacaoImagem(event: string): void {
-
+  public manipularAtualizacaoImagem(imagePreview: string): void {
+    this.imagemPrevisualizacao = imagePreview;
   }
 
 }

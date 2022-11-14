@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from './item-menu.types';
 
 @Component({
@@ -7,7 +7,7 @@ import { MenuItem } from './item-menu.types';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
   private rotaAtiva: string = 'home';
   private routesMap: MenuItem = {
@@ -25,9 +25,27 @@ export class NavbarComponent {
     }
   }
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private rotaAtivada: ActivatedRoute
+  ) { }
+
+ngOnInit():void{
+  this.rotaAtivada.url.subscribe(()=>{
+    this.definirRotaAtiva();
+  })
+}
 
 
+  public definirRotaAtiva() {
+    for (const menu in this.routesMap) {
+      const rotaMenu = this.routesMap[menu];
+      if (rotaMenu.routes.includes(this.router.url)) {
+        this.rotaAtiva = menu;
+        break;
+      }
+    }
+  }
 
   public getImage(menu: string): string {
     const menuRoute = this.routesMap[menu];
