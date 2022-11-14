@@ -16,10 +16,13 @@
       *ngIf="estaPerfilPessoal"
     />
   </div>
-  <hr class="linhaHorizontal" >
+  <hr class="linhaHorizontal" />
 
   <div class="estatisticas">
-    <app-avatar customClassName="profileAvatar" [src]="usuario?.avatar"></app-avatar>
+    <app-avatar
+      customClassName="profileAvatar bordaGradienteAvatar"
+      [src]="usuario?.avatar"
+    ></app-avatar>
 
     <div class="conteudoEstatisticas">
       <div class="numeros">

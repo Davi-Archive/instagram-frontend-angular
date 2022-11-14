@@ -18,7 +18,8 @@
           <app-upload-image
             [referencesformControl]="obterReferenciaInput('file')"
             [placeholderImage]="usuarioLogado?.avatar"
-            classImagePreviewCSS="avatarEdicaoPerfil"
+            classImagePreviewCSS="avatarEdicaoPerfil bordaGradienteAvatar
+"
             containerCSS="uploadImagemEdicaoPerfil"
             (updateImage)="manipularAtualizacaoImagem($event)"
           >
