@@ -12,6 +12,7 @@ export class CabecalhoComAcoesComponent {
   @Input() textoAcaoDireita: string = '';
   @Input() titulo: string = '';
   @Input() desabilitarAcaoDireita: boolean = false
+  @Input() classeCss?: string;
 
   @Output() aoClicarAcaoEsquerda: EventEmitter<any> = new EventEmitter();
   @Output() aoClicarAcaoDireita: EventEmitter<any> = new EventEmitter();

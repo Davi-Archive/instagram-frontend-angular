@@ -20,6 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then((v) => v.ProfileModule)
   },
   {
+    path: 'publicacao',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./publicacao/publicacao.module').then((x) => x.PublicacaoModule)
+  },
+  {
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import('./home/home.module').then((k) => k.HomeModule),
