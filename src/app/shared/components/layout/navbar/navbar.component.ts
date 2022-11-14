@@ -21,7 +21,7 @@ export class NavbarComponent {
     },
     perfil: {
       img: 'usuario',
-      routes: ['/perfil/1']
+      routes: ['/perfil/pessoal']
     }
   }
 

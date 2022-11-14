@@ -13,16 +13,7 @@ export class HeaderComponent {
 
   public searchTerm: string = '';
   public searchResult: Array<UserInstagram> = [];
-  /*   {
-      _id: '1',
-      nome: 'moke',
-      email: 'moke@moke',
-      avatar: '',
-      publicacoes: 0,
-      seguidores: 0,
-      seguindo: 0
-    }
-  ] */
+
   constructor(
     private router: Router,
     private apiUserInstagram: InstagramUserApi,
@@ -52,6 +43,6 @@ export class HeaderComponent {
   }
 
   public goToUserProfile(userId: string): void {
-    console.log(`printando o id do usuario ${userId}`)
+    this.router.navigate(['perfil', userId]);
   }
 }

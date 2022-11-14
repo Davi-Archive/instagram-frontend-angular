@@ -6,6 +6,9 @@ import { InstagramApiService } from './instagram-api.service';
   providedIn: 'root',
 })
 export class InstagramUserApi extends InstagramApiService {
+  public alternarSeguir(_id: string) {
+    return this.put('seguir?id=' + _id, {});
+  }
   public getUserData(): Promise<UserInstagram> {
     return this.get('usuario');
   }

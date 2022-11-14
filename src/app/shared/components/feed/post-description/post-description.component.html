@@ -1,5 +1,5 @@
 <div class="containerPost">
-  <a [routerLink]="'/perfil/' + post.idUsuario">
+  <a [routerLink]="obterUrlPerfil()">
     <div class="headerPost">
       <app-avatar
         [src]="post.usuario?.avatar"

@@ -5,5 +5,6 @@ export type UserInstagram = {
     avatar: string
     publicacoes: number,
     seguidores: number,
-    seguindo: number
+    seguindo: number,
+    segueEsseUsuario: boolean
 }

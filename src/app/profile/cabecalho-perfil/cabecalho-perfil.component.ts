@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
 import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
+import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
 import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 
 @Component({
@@ -11,13 +13,54 @@ import { UserInstagram } from 'src/app/shared/types/user-instagram.types';
 export class CabecalhoPerfilComponent implements OnInit {
 
   @Input() usuario?: UserInstagram | null;
+  public estaPerfilPessoal: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private servicoUsuario: InstagramUserApi,
+    private autenticacaoService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
+    if (this.router.url === '/perfil/pessoal') {
+      this.estaPerfilPessoal = true
+    }
   }
 
   public voltarParaHome() {
     this.router.navigateByUrl('/')
+  }
+
+  public async alternarSeguir() {
+    if (!this.usuario) return;
+
+    try {
+      await this.servicoUsuario.alternarSeguir(this.usuario?._id)
+      this.usuario.segueEsseUsuario = !this.usuario.segueEsseUsuario
+    } catch (error: any) {
+      alert(error?.error?.error || 'Erro ao Seguir/Deixar de seguir.')
+    }
+  }
+
+  public obterTextoBotaoPrincipal(): string {
+    if (this.estaPerfilPessoal) {
+      return 'Editar Perfil';
+    }
+
+    if (this.usuario?.segueEsseUsuario) {
+      return 'Deixar de seguir';
+    }
+    return 'Seguir'
+  }
+
+  public obterCorBotaoPrincipal() {
+    if (this.usuario?.segueEsseUsuario || this.estaPerfilPessoal) {
+      return 'outline'
+    }
+    return 'primary'
+  }
+
+  public logout() {
+    this.autenticacaoService.logout()
   }
 }

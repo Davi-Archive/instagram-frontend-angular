@@ -91,4 +91,12 @@ export class PostDescriptionComponent {
   public getLikeImage(): string {
     return `assets/images/${this.post.estaCurtido ? 'descurtir.svg' : 'curtir.svg'}`
   }
+
+  public obterUrlPerfil():string{
+    let idUsuarioPostagem = this.post.idUsuario;
+    if (idUsuarioPostagem===this.loggedUser?.id){
+      idUsuarioPostagem='pessoal'
+    }
+    return '/perfil/' + idUsuarioPostagem;
+  }
 }
