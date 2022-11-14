@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/authentication/authentication.service';
 import { LoggedUser } from 'src/app/shared/authentication/logged-user.types';
+import { InstagramUserApi } from 'src/app/shared/services/instagram-user-api.service';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -16,7 +17,8 @@ export class EditarPerfilComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private servicoAutenticacao: AuthenticationService
+    private servicoAutenticacao: AuthenticationService,
+    private usuarioApi: InstagramUserApi
   ) {
     this.usuarioLogado = this.servicoAutenticacao.getLoggedUser()
 
@@ -38,7 +40,24 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   public async atualizarPerfil(): Promise<void> {
-    console.log('editar Perfil')
+    if (this.form.invalid) return;
+
+    try {
+      const valorFormulario = this.form.value;
+      const payload = new FormData();
+      payload.append('nome', valorFormulario.nome)
+      if (valorFormulario.file) {
+        payload.append('file', valorFormulario.file)
+      }
+
+
+      await this.usuarioApi.atualizarPerfil(payload);
+      localStorage.setItem('nome', valorFormulario.nome)
+
+      this.router.navigateByUrl('/perfil/pessoal')
+    } catch (error: any) {
+      alert(error?.error?.error || 'Erro ao atualizar usuário')
+    }
   }
 
   public limparInputNome() {

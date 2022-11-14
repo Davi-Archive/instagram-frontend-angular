@@ -20,4 +20,8 @@ export class InstagramUserApi extends InstagramApiService {
   public obterInformacoesDoPerfil(idUsuario: string): Promise<UserInstagram> {
     return this.get('pesquisa?id=' + idUsuario)
   }
+
+  public atualizarPerfil(dados: any): Promise<void> {
+    return this.put('usuario', dados)
+  }
 }
